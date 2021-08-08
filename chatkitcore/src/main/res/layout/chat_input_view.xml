@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/chat_input_view_height"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:background="@color/warm_grey">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/etInput"
+        android:maxLines="1"
+        android:textCursorDrawable="@null"
+        android:textColorHint="@color/dark_gray"
+        android:cursorVisible="true"
+        android:layoutDirection="rtl"
+        android:fontFamily="@font/app_font"
+        android:hint="@string/input_hint"
+        android:gravity="center_vertical"
+        android:paddingRight="6dp"
+        android:paddingLeft="6dp"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/chat_input_view_margin"
+        android:layout_marginTop="@dimen/chat_input_view_margin"
+        android:layout_marginRight="@dimen/chat_input_view_margin"
+        android:layout_marginLeft="@dimen/chat_input_view_margin"
+        android:background="@drawable/rounded_grey"
+        android:layout_toLeftOf="@id/ivSubmit"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="@dimen/chat_input_submit_button_size"
+        android:layout_height="@dimen/chat_input_submit_button_size"
+        android:id="@+id/ivSubmit"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        app:srcCompat="@android:drawable/ic_menu_send"
+        android:background="@drawable/oval_green"
+        android:padding="6dp"
+        android:layout_marginRight="8dp"
+        />
+
+</RelativeLayout>

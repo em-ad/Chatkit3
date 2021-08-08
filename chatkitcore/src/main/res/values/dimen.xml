@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="chat_input_view_height">65dp</dimen>
+    <dimen name="chat_input_view_margin">12dp</dimen>
+    <dimen name="chat_input_submit_button_size">50dp</dimen>
+    <dimen name="chat_input_edittext_radius">12dp</dimen>
+</resources>
