@@ -1,4 +1,4 @@
-package com.emad.chatkitcore.utils;
+package com.emad.chatkitcore.util;
 
 import android.content.Context;
 import android.content.res.Resources;

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.emad.chatkitcore.model.MessageModel
-import com.emad.chatkitcore.utils.MessageDiffUtil
+import com.emad.chatkitcore.util.MessageDiffUtil
 
 class ChatAdapter(val chatResId: Int)
     : ListAdapter<MessageModel, ChatAdapter.ViewHolder>(MessageDiffUtil()) {

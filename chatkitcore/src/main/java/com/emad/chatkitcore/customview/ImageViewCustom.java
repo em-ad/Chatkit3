@@ -19,7 +19,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.emad.chatkitcore.R;
-import com.emad.chatkitcore.utils.AndroidUtils;
+import com.emad.chatkitcore.util.AndroidUtils;
 
 import java.io.File;
 

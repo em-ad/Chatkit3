@@ -1,4 +1,4 @@
-package com.emad.chatkitcore.utils
+package com.emad.chatkitcore.util
 
 import androidx.recyclerview.widget.DiffUtil
 import com.emad.chatkitcore.model.MessageModel
