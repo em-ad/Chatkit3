@@ -4,4 +4,15 @@
     android:layout_height="100dp"
     android:background="@color/green">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:fontFamily="@font/app_font"
+        android:layout_margin="12dp"
+        android:id="@+id/tv_message"
+        />
+
 </RelativeLayout>

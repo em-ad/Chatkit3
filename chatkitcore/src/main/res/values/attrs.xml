@@ -6,5 +6,11 @@
         <attr name="round_image" format="boolean" />
         <attr name="aspect_ratio" format="boolean" />
     </declare-styleable>
+    
+    <declare-styleable name="ChatMainView">
+        <attr name="self_res_id" format="reference"/>
+        <attr name="other_res_id" format="reference"/>
+        <attr name="system_res_id" format="reference"/>
+    </declare-styleable>
 
 </resources>

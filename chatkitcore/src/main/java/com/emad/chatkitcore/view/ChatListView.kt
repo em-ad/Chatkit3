@@ -5,13 +5,16 @@ import android.util.AttributeSet
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.emad.chatkitcore.callback.ChatListInterface
+import com.emad.chatkitcore.model.MessageModel
 
-class ChatListView: RecyclerView {
+class ChatListView : RecyclerView {
     constructor(context: Context) : super(context)
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
 
-    private var bubbleResId: Int = -1
+    var selfResId: Int = -1
+    var otherResId: Int = -1
+    var systemResId: Int = -1
     private var chatListInterface: ChatListInterface? = null
     private lateinit var adapter: ChatAdapter
 
@@ -21,20 +24,16 @@ class ChatListView: RecyclerView {
             if (recyclerView.layoutManager == null) return
             if (recyclerView.layoutManager!!.childCount +
                 (recyclerView.layoutManager as LinearLayoutManager?)!!.findFirstVisibleItemPosition()
-                >= recyclerView.layoutManager!!.itemCount) {
+                >= recyclerView.layoutManager!!.itemCount
+            ) {
                 chatListInterface?.paginateNow()
             }
         }
     }
 
-    public fun setResId(resId: Int){
-        this.bubbleResId = resId
-    }
-
     @Throws(Exception::class)
-    fun init()  {
-        if(bubbleResId == -1)
-            throw Exception("Chatkit Error: Chat Bubble Resource Id Not Specified!")
+    fun init() {
+        checkResIds()
         this.setHasFixedSize(false)
         this.isNestedScrollingEnabled = false
         this.addOnScrollListener(mScrollListener)
@@ -42,10 +41,25 @@ class ChatListView: RecyclerView {
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         layoutManager.stackFromEnd = false
         layoutManager.isSmoothScrollbarEnabled = false
-        adapter = ChatAdapter(bubbleResId)
+        adapter = ChatAdapter(selfResId, otherResId, systemResId)
         this.layoutManager = layoutManager
     }
 
+    @Throws(Exception::class)
+    private fun checkResIds() {
+        if (selfResId == -1)
+            throw Exception("Chatkit Error: Chat Bubble SELF ResId Not Provided!")
+        if (otherResId == -1)
+            throw Exception("Chatkit Error: Chat Bubble OTHER ResId Not Provided!")
+        if (systemResId == -1)
+            throw Exception("Chatkit Error: Chat Bubble SYSTEM ResId Not Provided!")
+
+    }
+
+    fun newMessageReceived(messageModel: MessageModel) {
+        if (::adapter.isInitialized)
+            adapter.addNewMessage(messageModel)
+    }
 
 
 }

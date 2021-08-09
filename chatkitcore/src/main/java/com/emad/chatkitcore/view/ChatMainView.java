@@ -2,6 +2,7 @@ package com.emad.chatkitcore.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -17,6 +18,8 @@ public class ChatMainView extends LinearLayout
     private ChatListView chatListView;
     private ChatInputView chatInputView;
 
+    private ChatStyle chatStyle;
+
     public ChatMainView(Context context) {
         super(context);
         initChat(context, null);
@@ -28,6 +31,7 @@ public class ChatMainView extends LinearLayout
     }
 
     private void initChat(Context context, @Nullable AttributeSet attrs) {
+        chatStyle = ChatStyle.Parser.parse(context, attrs);
         if(attrs != null){
 
         }
@@ -38,9 +42,14 @@ public class ChatMainView extends LinearLayout
         View conversationView = LayoutInflater.from(context).inflate(R.layout.chat_main_view, this, true);
         chatListView = conversationView.findViewById(R.id.chatList);
         chatInputView = conversationView.findViewById(R.id.chatInput);
-
-        chatListView.setResId(R.layout.test_bubble);
-
+        chatListView.setSelfResId(chatStyle.getSelfResId());
+        chatListView.setOtherResId(chatStyle.getOtherResId());
+        chatListView.setSystemResId(chatStyle.getSystemResId());
+        try {
+            chatListView.init();
+        } catch (Exception e) {
+            Log.e("TAG", "ChatKit3/" + e.getMessage() );
+        }
     }
 
     @Override
@@ -49,6 +58,6 @@ public class ChatMainView extends LinearLayout
     }
 
     public void newMessageReceived(MessageModel messageModel){
-
+        chatListView.newMessageReceived(messageModel);
     }
 }
