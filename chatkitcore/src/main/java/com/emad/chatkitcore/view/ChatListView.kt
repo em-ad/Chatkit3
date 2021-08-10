@@ -42,6 +42,7 @@ class ChatListView : RecyclerView {
         layoutManager.stackFromEnd = false
         layoutManager.isSmoothScrollbarEnabled = false
         adapter = ChatAdapter(selfResId, otherResId, systemResId)
+        this.setAdapter(adapter)
         this.layoutManager = layoutManager
     }
 

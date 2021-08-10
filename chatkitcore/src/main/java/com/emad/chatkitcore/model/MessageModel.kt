@@ -2,11 +2,13 @@ package com.emad.chatkitcore.model
 
 data class MessageModel(val id: String) {
 
-    lateinit var receiverId: String
-    lateinit var name: String
-    lateinit var message: String
-    lateinit var senderEnum: MessageSenderEnum
+    var receiverId: String = ""
+    var name: String = ""
+    var message: String = ""
+    var url: String = ""
     var date: Long = 0L
+    var download: DownloadStatus = DownloadStatus()
+    var senderEnum: MessageSenderEnum = MessageSenderEnum.SELF
 
     fun equals(other: MessageModel): Boolean {
         return id == other.id &&
@@ -14,6 +16,8 @@ data class MessageModel(val id: String) {
                 date == other.date &&
                 message == other.message &&
                 receiverId == other.receiverId &&
-                senderEnum == other.senderEnum
+                senderEnum == other.senderEnum &&
+                download == other.download &&
+                url == other.url
     }
 }

@@ -1,5 +1,6 @@
 package com.emad.chatkitcore.util
 
+import android.util.Log
 import androidx.recyclerview.widget.DiffUtil
 import com.emad.chatkitcore.model.MessageModel
 
