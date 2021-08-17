@@ -31,6 +31,10 @@ class ChatListView : RecyclerView {
         }
     }
 
+    public fun setChatInterface(chatListInterface: ChatListInterface){
+        this.chatListInterface = chatListInterface
+    }
+
     @Throws(Exception::class)
     fun init() {
         checkResIds()

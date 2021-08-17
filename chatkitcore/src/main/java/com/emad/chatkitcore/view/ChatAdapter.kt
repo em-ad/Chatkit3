@@ -45,27 +45,27 @@ class ChatAdapter(
     override fun onBindViewHolder(holder: ChatAdapter.ViewHolder, position: Int) {
         setViewValues(holder, position)
         checkDownloadable(holder, position)
-        if (getItem(position).download.downloaded)
-            holder.itemView.findViewById<ImageView>(R.id.iv_download).visibility = View.GONE
-        holder.itemView.findViewById<ImageView>(R.id.iv_download)
-            .setOnClickListener(View.OnClickListener {
-                DownloadUtils.startDownload(
-                    getItem(position),
-                    FileUtils.getFileUri(context, getItem(position))!!
-                )
-                getItem(position).download.addObserver(object : Observer {
-                    override fun update(p0: Observable?, p1: Any?) {
-                        Log.e("TAG", "update: " + p1 )
-                        notifyItemChanged(position)
-                    }
-                })
-            })
+//        if (getItem(position).download.downloaded)
+//            holder.itemView.findViewById<ImageView>(R.id.iv_download).visibility = View.GONE
+//        holder.itemView.findViewById<ImageView>(R.id.iv_download)
+//            .setOnClickListener(View.OnClickListener {
+//                DownloadUtils.startDownload(
+//                    getItem(position),
+//                    FileUtils.getFileUri(context, getItem(position))!!
+//                )
+//                getItem(position).download.addObserver(object : Observer {
+//                    override fun update(p0: Observable?, p1: Any?) {
+//                        Log.e("TAG", "update: " + p1 )
+//                        notifyItemChanged(position)
+//                    }
+//                })
+//            })
 
     }
 
     private fun setViewValues(holder: ChatAdapter.ViewHolder, position: Int) {
-        holder.itemView.findViewById<TextView>(R.id.tv_message).text = getItem(position).message
-        holder.itemView.findViewById<TextView>(R.id.tv_name).text = getItem(position).name
+        holder.itemView.findViewById<TextView>(R.id.tv_message)?.text = getItem(position).message
+        holder.itemView.findViewById<TextView>(R.id.tv_name)?.text = getItem(position).name
     }
 
     private fun checkDownloadable(holder: ChatAdapter.ViewHolder, position: Int) {
